@@ -1,0 +1,5 @@
+<div class="list-game">
+    <ng-container *ngFor="let game of listgame">
+        <app-game *ngIf="game.inventory > 0" [game]="game"></app-game>
+    </ng-container>
+</div>
