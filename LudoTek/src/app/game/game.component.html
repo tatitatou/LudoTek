@@ -4,7 +4,6 @@
     <p>Studio de développement : {{game.developper}}</p>
     <p>
         En stock : <span [ngStyle]="{ color: 'rgb(0, ' + game.inventory +'0)'}">{{ game.inventory }}</span> |
-        <button (click)="onAddGame()">Add</button>
     </p>
     <img [src]="game.imageUrl" [alt]="game.title"/>
 </div>

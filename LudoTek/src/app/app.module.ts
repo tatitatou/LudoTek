@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 import { HeaderComponent } from './header/header.component';
 import { ListGameComponent } from './list-game/list-game.component';
+import { BookingComponent } from './booking/booking.component';
+import { CustomerComponent } from './customer/customer.component';
+import { ListBookingComponent } from './list-booking/list-booking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
     HeaderComponent,
-    ListGameComponent
+    ListGameComponent,
+    BookingComponent,
+    CustomerComponent,
+    ListBookingComponent
   ],
   imports: [
     BrowserModule,

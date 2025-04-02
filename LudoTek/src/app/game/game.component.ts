@@ -10,8 +10,6 @@ import { game } from '../models/game.model';
 
 export class GameComponent {
   @Input() game!: game;
-  public onAddGame(): void {
-    this.game.inventory++;
-  }
+  
 }
 
