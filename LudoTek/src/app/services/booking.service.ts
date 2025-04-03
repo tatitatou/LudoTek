@@ -12,11 +12,16 @@ export class BookingService {
 
   constructor(private http: HttpClient) { }
 
-  getGames(): Observable<booking[]> {
+  getBookings(): Observable<booking[]> {
     return this.http.get<booking[]>(`${this.Url}/api/booking`);
   }
 
-  getGame(id: number): Observable<booking> {
+  getBooking(id: number): Observable<booking> {
     return this.http.get<booking>(`${this.Url}/api/booking/${id}`);
   } 
+
+  addBooking(booking: booking): Observable<booking> {
+    return this.http.post<booking>(`${this.Url}/api/booking`, booking);
+  } 
+
 }

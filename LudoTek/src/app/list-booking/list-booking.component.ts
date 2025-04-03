@@ -14,7 +14,7 @@ export class ListBookingComponent {
   constructor(private BookingService: BookingService) {}
 
   ngOnInit(): void {
-    this.BookingService.getGames().subscribe((data) => {
+    this.BookingService.getBookings().subscribe((data) => {
       this.listbooking = data;
     });
   }

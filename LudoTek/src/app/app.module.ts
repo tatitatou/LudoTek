@@ -9,6 +9,9 @@ import { ListGameComponent } from './list-game/list-game.component';
 import { BookingComponent } from './booking/booking.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ListBookingComponent } from './list-booking/list-booking.component';
+import { ListCustomerComponent } from './list-customer/list-customer.component';
+import { FormBookingComponent } from './form-booking/form-booking.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,16 @@ import { ListBookingComponent } from './list-booking/list-booking.component';
     ListGameComponent,
     BookingComponent,
     CustomerComponent,
-    ListBookingComponent
+    ListBookingComponent,
+    ListCustomerComponent,
+    FormBookingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

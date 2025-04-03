@@ -1,5 +1,6 @@
 <div class="list-booking">
     <h2>Booking List</h2>
+    <a [routerLink]="['/booking/add']" routerLinkActive="active">Add</a>
     <div *ngFor="let booking of listbooking" class="booking-card">
         <app-booking [booking]="booking"></app-booking>
     </div>

@@ -1,0 +1,6 @@
+<div class="list-customer">
+    <h2>Customer List</h2>
+    <div *ngFor="let customer of listcustomer" class="customer-card">
+        <app-customer [customer]="customer"></app-customer>
+    </div>
+</div>
