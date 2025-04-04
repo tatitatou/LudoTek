@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 import { HeaderComponent } from './header/header.component';
 import { ListGameComponent } from './list-game/list-game.component';
-import { BookingComponent } from './booking/booking.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ListBookingComponent } from './list-booking/list-booking.component';
 import { ListCustomerComponent } from './list-customer/list-customer.component';
@@ -19,18 +18,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GameComponent,
     HeaderComponent,
     ListGameComponent,
-    BookingComponent,
     CustomerComponent,
     ListBookingComponent,
     ListCustomerComponent,
-    FormBookingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FormBookingComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

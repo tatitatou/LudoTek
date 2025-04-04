@@ -1,6 +1,6 @@
 <div class="game-card" >
-    <h3>{{game.title | uppercase }}</h3>
-    <p>Sortie le : {{game.releaseDate | date: 'dd/MM/yyyy'}}</p>
+    <h3>{{game.title  }}</h3>
+    <p>Sortie le : {{game.releaseDate}}</p>
     <p>Studio de développement : {{game.developper}}</p>
     <p>
         En stock : <span [ngStyle]="{ color: 'rgb(0, ' + game.inventory +'0)'}">{{ game.inventory }}</span> |

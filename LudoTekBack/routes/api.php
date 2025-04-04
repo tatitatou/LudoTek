@@ -18,6 +18,7 @@ Route::apiresource('game', gameController::class);
 
 use App\Http\Controllers\api\bookingController;
 Route::apiresource('booking', bookingController::class);
+Route::get('bookings/all', [bookingController::class, 'getGameAndCustomer']);
 
 use App\Http\Controllers\api\CustomerController;
 Route::apiresource('customer', CustomerController::class);

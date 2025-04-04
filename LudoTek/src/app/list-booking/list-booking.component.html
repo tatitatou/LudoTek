@@ -1,7 +1,26 @@
-<div class="list-booking">
-    <h2>Booking List</h2>
-    <a [routerLink]="['/booking/add']" routerLinkActive="active">Add</a>
-    <div *ngFor="let booking of listbooking" class="booking-card">
-        <app-booking [booking]="booking"></app-booking>
-    </div>
-</div>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer name</th>
+        <th>Customer mail</th>
+        <th>Customer phone</th>
+        <th>Game</th>
+        <th>Status</th>
+        <th>Booking date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.bookingId || 'prout'}}</td>
+        <td>{{ booking.customer?.name || 'Non renseigné' }}</td>
+        <td>{{ booking.customer?.mail || 'Non renseigné' }}</td>
+        <td>{{ booking.customer?.phone || 'Non renseigné' }}</td>
+        <td>{{ booking.game?.title || 'Non renseigné' }}</td>
+        <td>{{ booking.bookingStatus }}</td>
+        <td>{{ booking.bookingDate | date:'dd/MM/yyyy' }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  

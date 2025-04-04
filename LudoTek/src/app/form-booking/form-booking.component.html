@@ -1,11 +1,23 @@
-<div class="monForm">
-    <section class="subForm saisieForm">
-        <h2>New booking</h2>
-        <form [formGroup]="formulaire"></form>
-    </section>
-    <div class="form-group">
-        <label for="bookingDate">Booking date</label>
-        <input type="text" class="form-control" id="bookingDate" formControlName="bookingDate"/>
-    </div>
-    <button type="submit"></button>
-</div>
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+    <label for="bookingDate">Booking date</label>
+    <input type="date" id="bookingDate" formControlName="bookingDate">
+
+    <label for="bookingStatus">Status :</label>
+    <select id="bookingStatus" formControlName="bookingStatus">
+      <option value="Confirmed">Confirmed</option>
+      <option value="Pending">Pending</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
+
+    <label for="customer">Customer :</label>
+    <select id="customer" formControlName="customer">
+      <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
+    </select>
+
+    <label for="game">Game :</label>
+    <select id="game" formControlName="game">
+      <option *ngFor="let game of games" [value]="game.id">{{ game.title }}</option>
+    </select>
+
+    <button type="submit" [disabled]="formulaire.invalid">Booking</button>
+</form>

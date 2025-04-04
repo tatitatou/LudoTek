@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
-import { booking } from '../models/booking.model';
-import { HttpClient } from '@angular/common/http';
+import { Booking } from '../models/booking.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
-
-  private Url = 'http://127.0.0.1:8000'
+  
+  private readonly apiUrl = 'http://127.0.0.1:8000/api/booking'; // Correction de l'URL
 
   constructor(private http: HttpClient) { }
 
-  getBookings(): Observable<booking[]> {
-    return this.http.get<booking[]>(`${this.Url}/api/booking`);
+  // Récupérer toutes les réservations
+  getBookings(): Observable<Booking[]> {
+    return this.http.get<Booking[]>(this.apiUrl);
   }
 
-  getBooking(id: number): Observable<booking> {
-    return this.http.get<booking>(`${this.Url}/api/booking/${id}`);
+  // Récupérer une réservation par ID
+  getBooking(id: number): Observable<Booking> {
+    return this.http.get<Booking>(`${this.apiUrl}/${id}`);
   } 
 
-  addBooking(booking: booking): Observable<booking> {
-    return this.http.post<booking>(`${this.Url}/api/booking`, booking);
+  // Ajouter une nouvelle réservation
+  addBooking(booking: Booking): Observable<Booking> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<Booking>(this.apiUrl, booking, { headers });
   } 
-
 }

@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
-import { booking } from '../models/booking.model'; 
+import { Component, OnInit } from '@angular/core';
+import { Booking } from '../models/booking.model'; 
 import { BookingService } from '../services/booking.service';
 
 @Component({
   selector: 'app-list-booking',
   standalone: false,
   templateUrl: './list-booking.component.html',
-  styleUrl: './list-booking.component.scss'
+  styleUrls: ['./list-booking.component.scss'] // Correction ici
 })
-export class ListBookingComponent {
-  listbooking!: booking[];
-  
-  constructor(private BookingService: BookingService) {}
+export class ListBookingComponent implements OnInit {
+  bookings: Booking[] = []; // Utilisation d'une initialisation propre
 
-  ngOnInit(): void {
-    this.BookingService.getBookings().subscribe((data) => {
-      this.listbooking = data;
+  constructor(private bookingService: BookingService) {} // Correction de la variable (camelCase)
+
+  ngOnInit() {
+    this.bookingService.getBookings().subscribe(data => {
+      this.bookings = data; // Assigne bien les données
     });
   }
 }

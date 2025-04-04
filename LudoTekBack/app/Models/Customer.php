@@ -19,7 +19,9 @@ class Customer extends Model
         'phone'
     ];
 
-
+    public function bookings(): HasMany {
+        return $this->hasMany(Booking::class);
+    }
     
     use HasFactory;
 }

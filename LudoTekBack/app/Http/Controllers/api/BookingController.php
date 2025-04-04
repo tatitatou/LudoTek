@@ -11,7 +11,8 @@ class BookingController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(Booking::all());
+        $booking = Booking::with(['customer', 'game'])->get();
+        return response()->json($booking);
     }
 
     public function store(Request $request): JsonResponse
@@ -54,4 +55,5 @@ class BookingController extends Controller
         $booking->delete();
         return response()->json(['message' => 'Booking deleted'], 200);
     }
+
 }
