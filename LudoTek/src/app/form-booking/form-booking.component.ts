@@ -3,20 +3,17 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BookingService } from '../services/booking.service';
 import { CustomerService } from '../services/customer.service';
 import { GameService } from '../services/game.service';
-import { GameComponent } from '../game/game.component';
 import { customer } from '../models/customer.model';
 import { game } from '../models/game.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Booking } from '../models/booking.model';
 
 
 @Component({
   selector: 'app-form-booking',
   templateUrl: './form-booking.component.html',
   styleUrls: ['./form-booking.component.scss'],
-  imports: [ReactiveFormsModule, CommonModule],
-  standalone: true
+  standalone: false
 })
 export class FormBookingComponent implements OnInit {
   formulaire!: FormGroup;
@@ -43,24 +40,18 @@ export class FormBookingComponent implements OnInit {
     });
   }
 
-  // Méthode pour soumettre le formulaire
   onSubmit() {
     if (this.formulaire.valid) {
-      console.log(this.formulaire.value.game);
-      console.log(this.formulaire.value.customer);
       const formData = {
         bookingDate: this.formulaire.value.bookingDate,
         bookingStatus: this.formulaire.value.bookingStatus,
         gameId: this.formulaire.value.game,
         customerId: this.formulaire.value.customer
       };
-  
-      console.log('👉 Données du formulaire à envoyer :', formData);
-  
+
       this.bookingService.addBooking(formData).subscribe({
         next: (res) => {
-          console.log('✅ Réservation enregistrée :', res);
-          this.router.navigate(['/bookings']);
+          this.router.navigate(['/booking']);
         },
         error: (err) => {
           console.error('❌ Erreur lors de l\'envoi de la réservation :', err);

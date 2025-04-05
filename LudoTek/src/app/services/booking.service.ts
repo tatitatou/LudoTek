@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class BookingService {
   
-  private readonly apiUrl = 'http://127.0.0.1:8000/api/booking'; // Correction de l'URL
+  private readonly apiUrl = 'http://127.0.0.1:8000/api/booking'; 
 
   constructor(private http: HttpClient) { }
 
@@ -23,13 +23,6 @@ export class BookingService {
   } 
 
   addBooking(booking: { bookingDate: Date, bookingStatus: string, customerId: number, gameId: number }): Observable<Booking> {
-    console.log(booking);
-    return this.http.post<Booking>(this.apiUrl, this.cleanBookingData(booking));
-    //this.cleanBookingData(bookingData)
+    return this.http.post<Booking>(this.apiUrl, booking);
   }
-  
-  private cleanBookingData(data: any): any {
-    const { created_at, updated_at, ...cleaned } = data;
-    return cleaned;
-  }  
 }

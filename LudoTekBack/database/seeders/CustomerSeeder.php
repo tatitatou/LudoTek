@@ -27,7 +27,7 @@ class CustomerSeeder extends Seeder
             [
                 'name' => 'Thibault LATXAGUE',
                 'mail' => 'tlatxague@mail.fr',
-                'phone' => '+33 6 89 45 20 11',
+                'phone' => '+33 6 37 07 41 42 (appelle-moi carpentier stp)',
             ],
             [
                 'name' => 'François BARLIC',
@@ -37,8 +37,13 @@ class CustomerSeeder extends Seeder
             [
                 'name' => 'Thibault CHIPY',
                 'mail' => 'tchipy@mail.fr',
-                'phone' => '+33 6 35 48 66 52',
+                'phone' => '+33 6 35 48 66 52', //6 652
             ],
+            [
+                'name' => 'Tatiana NOVION',
+                'mail' => 'tnovion@mail.fr',
+                'phone' => '+33 7 85 78 96 88'
+            ]
         ];
 
         DB::table('customers')->insert($customers);

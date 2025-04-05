@@ -1,6 +1,21 @@
-<div class="list-customer">
-    <h2>Customer List</h2>
-    <div *ngFor="let customer of listcustomer" class="customer-card">
-        <app-customer [customer]="customer"></app-customer>
-    </div>
+<div class="customer-list">
+  <h2>CLient List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name : </th>
+        <th>Email :</th>
+        <th>Phone number : </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of listcustomer">
+        <td>{{ customer.customerId }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.mail }}</td>
+        <td>{{ customer.phone }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
