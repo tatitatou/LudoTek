@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id('bookingId');
             $table->date('bookingDate');
-            $table->enum('bookingStatus',['In waiting', 'Confirmed','Canceled'])->default('In waiting');
+            $table->enum('bookingStatus',['Pending', 'Confirmed','Cancelled'])->default('Pending');
             $table->unsignedBigInteger('customerId');
             $table->unsignedBigInteger('gameId');
             
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('gameId') 
                 ->references('gameId')->on('games') 
                 ->onDelete('cascade');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

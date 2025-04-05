@@ -29,8 +29,5 @@ class Booking extends Model
         return $this->belongsTo(Customer::class, 'customerId');
     }
 
-    protected $hidden = ['gameId', 'customerId'];
-
-
     use HasFactory;
 }

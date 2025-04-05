@@ -1,5 +1,5 @@
 export class game {
-    id!: number;
+    gameId!: number;
     title!: string;
     imageUrl! : string;
     plateform!: string;
@@ -9,7 +9,7 @@ export class game {
     inventory!: number;
 
     constructor(id: number, title: string, imageUrl: string, plateform:string, sort:string,developper:string,releaseDate:Date,inventory:number){
-        this.id = id;
+        this.gameId = id;
         this.title = title;
         this.imageUrl = imageUrl;
         this.plateform = plateform;

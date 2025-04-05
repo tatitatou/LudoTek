@@ -1,4 +1,17 @@
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  <label for="customer">Customer :</label>
+  <select id="customer" formControlName="customer">
+    <option [value]="null" disabled selected>-- Select a customer --</option>
+    <option *ngFor="let customer of customers" [value]="customer.customerId">{{customer.name}}</option>
+  </select>
+
+  <label for="game">Game :</label>
+  <select id="game" formControlName="game">
+    <option *ngFor="let game of games" [value]="game.gameId">{{ game.title }}</option>
+    <option [value]="null" disabled selected>-- Select a game --</option>
+  </select>
+
+
     <label for="bookingDate">Booking date</label>
     <input type="date" id="bookingDate" formControlName="bookingDate">
 
@@ -9,15 +22,6 @@
       <option value="Cancelled">Cancelled</option>
     </select>
 
-    <label for="customer">Customer :</label>
-    <select id="customer" formControlName="customer">
-      <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
-    </select>
-
-    <label for="game">Game :</label>
-    <select id="game" formControlName="game">
-      <option *ngFor="let game of games" [value]="game.id">{{ game.title }}</option>
-    </select>
-
+    
     <button type="submit" [disabled]="formulaire.invalid">Booking</button>
 </form>

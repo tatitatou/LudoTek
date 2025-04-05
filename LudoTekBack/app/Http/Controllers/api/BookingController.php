@@ -20,8 +20,8 @@ class BookingController extends Controller
         $validated = $request->validate([
             'bookingDate' => 'required|date',
             'bookingStatus' => 'required|string',
-            'customerId' => 'required|number',
-            'gameId' => 'required|number',
+            'customerId' => 'required|integer',
+            'gameId' => 'required|integer',
         ]);
 
         $booking = Booking::create($validated);
@@ -39,8 +39,8 @@ class BookingController extends Controller
         $validated = $request->validate([
             'bookingDate' => 'required|date',
             'bookingStatus' => 'required|string',
-            'customerId' => 'required|number',
-            'gameId' => 'required|number',
+            'customerId' => 'required|integer',
+            'gameId' => 'required|integer',
         ]);
     
         $booking = Booking::findOrFail($id);
@@ -55,5 +55,6 @@ class BookingController extends Controller
         $booking->delete();
         return response()->json(['message' => 'Booking deleted'], 200);
     }
+
 
 }

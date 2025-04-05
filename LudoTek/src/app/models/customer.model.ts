@@ -1,11 +1,11 @@
 export class customer {
-    id!: number;
+    customerId!: number;
     name!: string;
     mail!: string;
     phone!: string;
 
     constructor(id: number, name: string, mail: string, phone: string){
-        this.id = id;
+        this.customerId = id;
         this.name = name;
         this.mail = mail;
         this.phone = phone;

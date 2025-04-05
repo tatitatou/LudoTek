@@ -22,9 +22,14 @@ export class BookingService {
     return this.http.get<Booking>(`${this.apiUrl}/${id}`);
   } 
 
-  // Ajouter une nouvelle réservation
-  addBooking(booking: Booking): Observable<Booking> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<Booking>(this.apiUrl, booking, { headers });
-  } 
+  addBooking(booking: { bookingDate: Date, bookingStatus: string, customerId: number, gameId: number }): Observable<Booking> {
+    console.log(booking);
+    return this.http.post<Booking>(this.apiUrl, this.cleanBookingData(booking));
+    //this.cleanBookingData(bookingData)
+  }
+  
+  private cleanBookingData(data: any): any {
+    const { created_at, updated_at, ...cleaned } = data;
+    return cleaned;
+  }  
 }

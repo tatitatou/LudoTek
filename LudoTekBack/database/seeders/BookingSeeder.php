@@ -22,7 +22,7 @@ class BookingSeeder extends Seeder
             ],
             [
                 'bookingDate' => '2025-02-07',
-                'bookingStatus' => 'Canceled',
+                'bookingStatus' => 'Cancelled',
                 'customerId' => '3',
                 'gameId' => '4',
             ],

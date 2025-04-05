@@ -3,27 +3,35 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BookingService } from '../services/booking.service';
 import { CustomerService } from '../services/customer.service';
 import { GameService } from '../services/game.service';
+import { GameComponent } from '../game/game.component';
+import { customer } from '../models/customer.model';
+import { game } from '../models/game.model';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { Booking } from '../models/booking.model';
+
 
 @Component({
   selector: 'app-form-booking',
   templateUrl: './form-booking.component.html',
   styleUrls: ['./form-booking.component.scss'],
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule, CommonModule],
+  standalone: true
 })
 export class FormBookingComponent implements OnInit {
   formulaire!: FormGroup;
-  customers: any[] = []; // Liste des clients
-  games: any[] = [];
+  customers: customer[] = []; 
+  games: game[] = []; 
 
 
-  constructor(private formBuilder: FormBuilder, private gameService: GameService, private customerService: CustomerService) {}
+  constructor(private formBuilder: FormBuilder, private gameService: GameService, private customerService: CustomerService, private bookingService: BookingService, private router: Router) {}
 
   ngOnInit(): void {
     this.formulaire = this.formBuilder.group({
-      bookingDate: [null, Validators.required], // Date obligatoire
-      bookingStatus: ['', Validators.required], // Statut obligatoire
-      game: [null, Validators.required], // Lien vers le jeu
-      customer: [null, Validators.required] // Lien vers le client
+      bookingDate: [null, Validators.required], 
+      bookingStatus: ['', Validators.required], 
+      game: [null, Validators.required], 
+      customer: [null, Validators.required] 
     });
 
     this.customerService.getCustomers().subscribe(data => {
@@ -38,10 +46,31 @@ export class FormBookingComponent implements OnInit {
   // Méthode pour soumettre le formulaire
   onSubmit() {
     if (this.formulaire.valid) {
-      console.log('Formulaire soumis :', this.formulaire.value);
-      // Ici, tu peux envoyer les données à ton service via HTTP
+      console.log(this.formulaire.value.game);
+      console.log(this.formulaire.value.customer);
+      const formData = {
+        bookingDate: this.formulaire.value.bookingDate,
+        bookingStatus: this.formulaire.value.bookingStatus,
+        gameId: this.formulaire.value.game,
+        customerId: this.formulaire.value.customer
+      };
+  
+      console.log('👉 Données du formulaire à envoyer :', formData);
+  
+      this.bookingService.addBooking(formData).subscribe({
+        next: (res) => {
+          console.log('✅ Réservation enregistrée :', res);
+          this.router.navigate(['/bookings']);
+        },
+        error: (err) => {
+          console.error('❌ Erreur lors de l\'envoi de la réservation :', err);
+        }
+      });
     } else {
-      console.log('Formulaire invalide');
+      console.warn('⚠️ Formulaire invalide', this.formulaire.errors);
     }
   }
-}
+  
+  
+  }
+
