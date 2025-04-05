@@ -1,26 +1,44 @@
+<div class="filter-container">
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search a booking..."
+      [(ngModel)]="searchTerm"
+    />
+  </div>
+
+  <div class="status-filter">
+    <select [(ngModel)]="selectedStatus">
+      <option value="">All statuses</option>
+      <option value="Confirmed">Confirmed</option>
+      <option value="Cancelled">Cancelled</option>
+      <option value="Pending">Pending</option>
+    </select>
+  </div>
+</div>
+
+
 <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Customer name</th>
-        <th>Customer mail</th>
-        <th>Customer phone</th>
-        <th>Game</th>
-        <th>Status</th>
-        <th>Booking date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let booking of bookings">
-        <td>{{ booking.bookingId || 'prout'}}</td>
-        <td>{{ booking.customer?.name || 'Non renseigné' }}</td>
-        <td>{{ booking.customer?.mail || 'Non renseigné' }}</td>
-        <td>{{ booking.customer?.phone || 'Non renseigné' }}</td>
-        <td>{{ booking.game?.title || 'Non renseigné' }}</td>
-        <td>{{ booking.bookingStatus }}</td>
-        <td>{{ booking.bookingDate  }}</td>
-        
-      </tr>
-    </tbody>
-  </table>
-  
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer name</th>
+      <th>Customer mail</th>
+      <th>Customer phone</th>
+      <th>Game</th>
+      <th>Status</th>
+      <th>Booking date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let booking of filteredBookings">
+      <td>{{ booking.bookingId || 'Non rensigné' }}</td>
+      <td>{{ booking.customer?.name || 'Non renseigné' }}</td>
+      <td>{{ booking.customer?.mail || 'Non renseigné' }}</td>
+      <td>{{ booking.customer?.phone || 'Non renseigné' }}</td>
+      <td>{{ booking.game?.title || 'Non renseigné' }}</td>
+      <td>{{ booking.bookingStatus }}</td>
+      <td>{{ booking.bookingDate }}</td>
+    </tr>
+  </tbody>
+</table>

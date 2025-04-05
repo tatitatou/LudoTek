@@ -1,14 +1,38 @@
-<table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>title</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let game of listgame">
-        <td>{{ game.gameId }}</td>
-        <td>{{ game.title || 'Non renseigné' }}</td>        
-      </tr>
-    </tbody>
-  </table>
+<div class="filter-container">
+  <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Search a game..." 
+      [(ngModel)]="searchTerm">
+  </div>
+
+  <div class="platform-filter">
+    <select [(ngModel)]="selectedPlatform">
+      <option value="">All plateform</option>
+      <option value="PC">PC</option>
+      <option value="Nintendo Switch">Nintendo Switch</option>
+      <option value="Wii">Wii</option>
+      <option value="Playstation 4">Playstation 4</option>
+      <option value="Playstation 5">Playstation 5</option>
+      <option value="Xbox Series X">Xbox Series X</option>
+      <option value="Xbox One">Xbox One</option>
+    </select>
+  </div>
+</div>
+
+<div *ngFor="let game of filteredGames" class="game-card">
+  <div class="game-image-container">
+    <img [src]="game.imageUrl" alt="{{ game.title }}" class="game-image">
+  </div>
+  <div class="game-details">
+    <h2 class="game-title">{{ game.title }}</h2>
+    <ul>
+      <li><strong>ID:</strong> {{ game.gameId }}</li>
+      <li><strong>Plateform:</strong> {{ game.plateform }}</li>
+      <li><strong>Sort:</strong> {{ game.sort }}</li>
+      <li><strong>Developper:</strong> {{ game.developper }}</li>
+      <li><strong>Release date:</strong> {{ game.releaseDate | date:'mediumDate' }}</li>
+      <li><strong>Inventory:</strong> {{ game.inventory }}</li>
+    </ul>
+  </div>
+</div>

@@ -27,7 +27,7 @@ class CustomerSeeder extends Seeder
             [
                 'name' => 'Thibault LATXAGUE',
                 'mail' => 'tlatxague@mail.fr',
-                'phone' => '+33 6 37 07 41 42 (appelle-moi carpentier stp)',
+                'phone' => '+33 6 37 07 41 43',
             ],
             [
                 'name' => 'François BARLIC',
@@ -37,12 +37,12 @@ class CustomerSeeder extends Seeder
             [
                 'name' => 'Thibault CHIPY',
                 'mail' => 'tchipy@mail.fr',
-                'phone' => '+33 6 35 48 66 52', //6 652
+                'phone' => '+33 6 35 48 66 52', 
             ],
             [
                 'name' => 'Tatiana NOVION',
                 'mail' => 'tnovion@mail.fr',
-                'phone' => '+33 7 85 78 96 88'
+                'phone' => '+33 7 85 78 96 89'
             ]
         ];
 

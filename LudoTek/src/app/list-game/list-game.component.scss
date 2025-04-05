@@ -1,5 +1,69 @@
-.list-game{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-column-gap: 15px;
-}
+.game-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff; 
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
+    margin: 20px auto;
+    max-width: 800px;
+  
+    .game-image-container {
+      flex: 0 0 150px;
+      
+      .game-image {
+        width: 150px;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+    .game-details {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  
+      .game-title {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 24px;
+        color: #333;
+      }
+  
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          margin-bottom: 5px;
+          font-size: 14px;
+          color: #555;
+  
+          strong {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  .status-filter {
+    flex: 0 0 200px;
+    
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s;
+      
+      &:focus {
+        border-color: #007BFF;
+      }
+    }
+  }

@@ -17,3 +17,48 @@ table {
     background-color: #f9f9f9;
   }
   
+  .filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .search-container {
+    flex: 1;
+    
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s;
+      
+      &:focus {
+        border-color: #007BFF; 
+      }
+    }
+  }
+  
+  .platform-filter,
+  .status-filter {
+    flex: 0 0 200px; 
+    
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px; 
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s;
+      
+      &:focus {
+        border-color: #007BFF; 
+      }
+    }
+  }
+  
